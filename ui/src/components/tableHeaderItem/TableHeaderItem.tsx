@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { TableHeaderItemProps } from './TableHeaderItemTypes';
 import { Sort } from '../tableHeaders/TablerderHeaderTypes';
 
 
-const TableHeaderItem = ({ title, key, onHeaderClick } : TableHeaderItemProps) => {
+const TableHeaderItem = ({ title, onHeaderClick } : TableHeaderItemProps) => {
 
     const [sort, setSort] = useState<Sort|undefined>(undefined);
 
@@ -20,7 +20,6 @@ const TableHeaderItem = ({ title, key, onHeaderClick } : TableHeaderItemProps) =
 
     return (
         <div
-            key={ key }
             className="px-2.5 flex-fixed-size flex-1 hover:cursor-pointer" onClick={ () => {
                 let updSort;
             if (sort === Sort.Descending) {

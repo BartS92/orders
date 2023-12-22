@@ -11,7 +11,7 @@ const TableHeaders = ({ cells, onHeaderClick } : TableHeaderProps) => {
                 { cells
                     .map(
                         (cell, index) => (
-                            <TableHeaderItem key={index} title={cell.title} onHeaderClick={onHeaderClick(cell.sort)}/>
+                            <TableHeaderItem key={'header'+index} title={cell.title} onHeaderClick={onHeaderClick(cell.sort)}/>
                         )
                     )}
             </div>
