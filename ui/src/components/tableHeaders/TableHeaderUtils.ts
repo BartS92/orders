@@ -47,9 +47,9 @@ const statusCompare = (a: Order, b: Order) => {
     return 0;
 }
 
-const numberRegExp = /[0-9]*$/i;
-const dateRexExp = /[0-9]{2}.[0-9]{2}.[0-9]{4}$/i;
-const sumRexExp = /[$€]?[0-9]$/i;
+const numberRegExp = /[0-9]{1,7}$/i;
+const dateRexExp = /[0-9]*\\.*$/i;
+const sumRexExp = /[$€]*[0-9]*/i;
 const statusRexExp = /^[a-zA-Z]*$/i;
 
 export const orderTableCells = [

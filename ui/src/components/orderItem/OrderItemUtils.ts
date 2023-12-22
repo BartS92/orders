@@ -1,6 +1,6 @@
 import moment from 'moment';
 
-const Currencies: {[key: string]: string} = {
+export const Currencies: {[key: string]: string} = {
  ["EUR"]: "€",
 }
 

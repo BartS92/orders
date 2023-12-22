@@ -19,7 +19,7 @@ const TableHeaderItem = ({ title, onHeaderClick } : TableHeaderItemProps) => {
     }
 
     return (
-        <div className="px-2.5 flex-fixed-size flex-1 hover:cursor-pointer" onClick={ () => {
+        <div className="px-2.5 flex-fixed-size flex-1 hover:cursor-pointer" onClick={() => {
             let updSort;
             if (sort === Sort.Descending) {
                 updSort = Sort.Ascending;

@@ -12,7 +12,7 @@ import { orderTableCells } from '../tableHeaders/TableHeaderUtils';
 
 function Table() {
     const [orders, setOrders] = useState<Order[]>([]);
-    const [filteredOrders, setFilteredOrders] = useState<Order[]>([]);
+    const [filteredOrders, setFilteredOrders] = useState<Order[]|null>(null);
 
 
     useEffect(() => {
@@ -32,15 +32,16 @@ function Table() {
 
     const onFilterChanged = (filter: string) => {
         if (!filter.length) {
-            setFilteredOrders([]);
+            setFilteredOrders(null);
             setOrders([...orders!]);
         } else {
-            setFilteredOrders(getFilteredOrders(orders, filter));
+            const resOrders= getFilteredOrders(orders, filter);
+            setFilteredOrders(resOrders);
         }
     }
 
     const getOrders = () => {
-        return filteredOrders.length && filteredOrders || orders;
+        return filteredOrders || orders;
     }
 
   return (
