@@ -1,5 +1,6 @@
 import { Order } from '../../store/apis/baseApi';
-import { orderTableCells } from '../orderHeaders/OrderHeaderUtils';
+import { orderTableCells } from '../tableHeaders/TableHeaderUtils';
+
 
 export const getFilteredOrders= (orders: Order[], filter: string) => {
     const filterColumns = orderTableCells.filter(cell => cell.regex.test(filter));

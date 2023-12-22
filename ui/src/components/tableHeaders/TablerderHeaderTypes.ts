@@ -7,7 +7,7 @@ export enum Sort {
 }
 
 
-export type OrderHeaderProps = {
+export type TableHeaderProps = {
     cells: { title: string, sort?: (a:Order, b:Order) =>  number}[],
     onHeaderClick: (sortFunc?: (a:Order, b:Order) =>  number) => (sort: Sort) => void
 }

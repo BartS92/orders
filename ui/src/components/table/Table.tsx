@@ -1,13 +1,16 @@
 import { useEffect, useState } from 'react';
 import Filter from '../filter/Filter';
 import { fetchOrders, Order } from '../../store/apis/baseApi';
-import OrderHeaders from '../orderHeaders/OrderHeaders';
-import { Sort } from '../orderHeaders/OrderHeaderTypes';
-import OrderItem from '../orderItem/OrderItem';
-import { orderTableCells } from '../orderHeaders/OrderHeaderUtils';
-import { getFilteredOrders } from './OrderTableUtils';
+import TableHeaders from '../tableHeaders/TableHeaders';
 
-function OrderTable() {
+import OrderItem from '../orderItem/OrderItem';
+import { Sort } from '../tableHeaders/TablerderHeaderTypes';
+import { getFilteredOrders } from './TableUtils';
+import { orderTableCells } from '../tableHeaders/TableHeaderUtils';
+
+
+
+function Table() {
     const [orders, setOrders] = useState<Order[]>([]);
     const [filteredOrders, setFilteredOrders] = useState<Order[]>([]);
 
@@ -49,7 +52,7 @@ function OrderTable() {
             <Filter onFilterChange={onFilterChanged}/>
         </div>
         <div className='border-t border-[#C8C8C8] mt-[17px]'>
-            <OrderHeaders cells={orderTableCells} onHeaderClick={onHeaderClick}/>
+            <TableHeaders cells={orderTableCells} onHeaderClick={onHeaderClick}/>
             {getOrders().map((order, i) => {
                 return <OrderItem orderItem={order} key={order.id}/>
             })}
@@ -58,4 +61,4 @@ function OrderTable() {
   );
 }
 
-export default OrderTable;
+export default Table;

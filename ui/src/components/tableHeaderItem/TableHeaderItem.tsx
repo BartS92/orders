@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { OrderHeaderItemProps, Sort } from './OrderHeaderItemTypes';
+import { TableHeaderItemProps } from './TableHeaderItemTypes';
+import { Sort } from '../tableHeaders/TablerderHeaderTypes';
 
 
-const OrderHeaderItem = ({ title, key, onHeaderClick } : OrderHeaderItemProps) => {
+const TableHeaderItem = ({ title, key, onHeaderClick } : TableHeaderItemProps) => {
 
     const [sort, setSort] = useState<Sort|undefined>(undefined);
 
@@ -39,4 +40,4 @@ const OrderHeaderItem = ({ title, key, onHeaderClick } : OrderHeaderItemProps) =
     );
 };
 
-export default OrderHeaderItem;
+export default TableHeaderItem;

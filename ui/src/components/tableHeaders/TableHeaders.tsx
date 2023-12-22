@@ -1,9 +1,9 @@
 import React from 'react';
-import { OrderHeaderProps, Sort } from './OrderHeaderTypes';
-import OrderHeaderItem from '../orderHeaderItem/OrderHeaderItem';
+import TableHeaderItem from '../tableHeaderItem/TableHeaderItem';
+import { TableHeaderProps } from './TablerderHeaderTypes';
 
 
-const OrderHeaders = ({ cells, onHeaderClick } : OrderHeaderProps) => {
+const TableHeaders = ({ cells, onHeaderClick } : TableHeaderProps) => {
 
     return (
         <div className="w-full flex flex-col flex-nowrap rounded-md overflow-hidden flex-fixed-size font- mt-4 mb-4">
@@ -11,7 +11,7 @@ const OrderHeaders = ({ cells, onHeaderClick } : OrderHeaderProps) => {
                 { cells
                     .map(
                         (cell, index) => (
-                            <OrderHeaderItem key={index} title={cell.title} onHeaderClick={onHeaderClick(cell.sort)}/>
+                            <TableHeaderItem key={index} title={cell.title} onHeaderClick={onHeaderClick(cell.sort)}/>
                         )
                     )}
             </div>
@@ -19,4 +19,4 @@ const OrderHeaders = ({ cells, onHeaderClick } : OrderHeaderProps) => {
     );
 };
 
-export default OrderHeaders;
+export default TableHeaders;

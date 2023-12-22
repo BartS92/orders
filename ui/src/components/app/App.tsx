@@ -1,9 +1,9 @@
-import OrderTable from '../orderTable/OrderTable';
+import Table from '../table/Table';
 
 const App = () => {
     return (
         <div className='w-full'>
-            <OrderTable />
+            <Table />
         </div>
     );
 }
