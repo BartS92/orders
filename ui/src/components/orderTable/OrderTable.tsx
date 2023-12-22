@@ -5,20 +5,16 @@ import OrderHeaders from '../orderHeaders/OrderHeaders';
 import { Sort } from '../orderHeaders/OrderHeaderTypes';
 import OrderItem from '../orderItem/OrderItem';
 import { orderTableCells } from '../orderHeaders/OrderHeaderUtils';
+import { getFilteredOrders } from './OrderTableUtils';
 
 function OrderTable() {
-    const [orders, setOrders] = useState<Order[]>();
-    const [filter, setFilter] = useState<string>();
-
-
-    useEffect(() => {
-
-    },[filter])
+    const [orders, setOrders] = useState<Order[]>([]);
+    const [filteredOrders, setFilteredOrders] = useState<Order[]>([]);
 
 
     useEffect(() => {
         const fetch = async () => {
-            const data  = await fetchOrders();
+            const data= await fetchOrders();
             setOrders(data.data);
         }
         fetch();
@@ -31,17 +27,30 @@ function OrderTable() {
         setOrders([...orders!]);
     }
 
+    const onFilterChanged = (filter: string) => {
+        if (!filter.length) {
+            setFilteredOrders([]);
+            setOrders([...orders!]);
+        } else {
+            setFilteredOrders(getFilteredOrders(orders, filter));
+        }
+    }
+
+    const getOrders = () => {
+        return filteredOrders.length && filteredOrders || orders;
+    }
+
   return (
     <div className='pt-[19px] pl-[32px] pr-[19px] w-[1335px] mx-auto'>
         <div className='inline-block w-full'>
             <span className='text-4xl font-bold'>
                 All orders
             </span>
-            <Filter onFilterChange={(filterUpd) => setFilter(filterUpd)}/>
+            <Filter onFilterChange={onFilterChanged}/>
         </div>
         <div className='border-t border-[#C8C8C8] mt-[17px]'>
             <OrderHeaders cells={orderTableCells} onHeaderClick={onHeaderClick}/>
-            {orders?.map((order, i) => {
+            {getOrders().map((order, i) => {
                 return <OrderItem orderItem={order} key={order.id}/>
             })}
         </div>

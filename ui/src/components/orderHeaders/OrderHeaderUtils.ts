@@ -30,10 +30,15 @@ const statusCompare = (a:Order, b: Order) => {
     return 0;
 }
 
+const numberRegExp = /[0-9]*$/i;
+const dateRexExp = /[0-9]{2}.[0-9]{2}.[0-9]{4}$/i;
+const sumRexExp = /[$€]?[0-9]$/i;
+const statusRexExp = /^[a-zA-Z]*$/i;
+
 export const orderTableCells = [
-    { title: 'Order ID'},
-    { title: 'Order date', sort: dateCompare},
-    { title: 'Order total'},
-    { title: 'Quantity' },
-    { title: 'Status', sort: statusCompare}
+    { title: 'Order ID', property: 'id', regex: numberRegExp },
+    { title: 'Order date', property: 'date', regex: dateRexExp, sort: dateCompare},
+    { title: 'Order total', property: 'total', regex: sumRexExp},
+    { title: 'Quantity', property: 'quantity', regex: numberRegExp},
+    { title: 'Status', property: 'status', sort: statusCompare, regex: statusRexExp}
 ];
