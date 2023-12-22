@@ -6,10 +6,10 @@ const SERVICE_API = 'https://outvio-dev-public1.s3.eu-central-1.amazonaws.com/js
 const RESOURCE_FILE = 'orders.json'
 
 export type Order = {
-    id: number;
-    total: number;
+    id: string;
+    total: string;
     currency: string;
-    quantity: number;
+    quantity: string;
     status: string;
     date: string;
 }

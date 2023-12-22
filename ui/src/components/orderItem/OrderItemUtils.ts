@@ -10,7 +10,7 @@ export enum Status {
     Delivered="Delivered"
 }
 
-export const getTotalString = (total: number, currency: string): string => {
+export const getTotalString = (total: string, currency: string): string => {
     return `${Currencies[currency]}${total}`;
 }
 

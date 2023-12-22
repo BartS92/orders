@@ -26,7 +26,7 @@ function Table() {
     const onHeaderClick = (sortFunc?: (a: Order, b: Order) => number) => (sort: Sort) => {
         if (sortFunc) orders?.sort(sortFunc);
         else orders?.sort();
-        if (sort === Sort.Ascending) orders?.reverse();
+        if (sort === Sort.Descending) orders?.reverse();
         setOrders([...orders!]);
     }
 
