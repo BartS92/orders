@@ -50,7 +50,7 @@ const statusCompare = (a: Order, b: Order) => {
 const numberRegExp = /[0-9]{1,7}$/i;
 const dateRexExp = /[0-9]*\.*$/i;
 const sumRexExp = /€*[0-9]*/i;
-const statusRexExp = /^[a-zA-Z]*$/i;
+const statusRexExp = /.*$/i;
 
 export const orderTableCells = [
     { title: 'Order ID', property: 'id', regex: numberRegExp, sort: idCompare },
