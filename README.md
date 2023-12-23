@@ -6,3 +6,4 @@
 2. `npm install`
 
 3. `npm run start`
+4. Open `localhost:3000` in browser
