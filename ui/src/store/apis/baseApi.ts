@@ -14,10 +14,6 @@ export type Order = {
     date: string;
 }
 
-export type Response = {
-    orders: Order[];
-}
-
 
 export const fetchOrders = async () => {
     return (await axios(`${ SERVICE_API }/${ RESOURCE_FILE }`));
