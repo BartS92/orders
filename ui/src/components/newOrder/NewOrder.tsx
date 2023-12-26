@@ -1,11 +1,11 @@
 import { NewOrderProps } from './NewOrderTypes';
 import NewOrderProperty from './NewOrderProperty';
-import { ChangeEvent, useCallback, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { Order } from '../../store/apis/baseApi';
 import { validate } from './NewOrderUtils';
 
 
-const NewOrder = (props: NewOrderProps) => {
+const NewOrder = ({addOrder, close}: NewOrderProps) => {
     const [order, setOrder] = useState<Order>({
         quantity:'',
         total:'',
@@ -14,7 +14,6 @@ const NewOrder = (props: NewOrderProps) => {
         date:'',
         currency: 'EUR'
     });
-    const [errors, setErrors] = useState()
 
 
     const handleChange = (name: string) => (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -30,7 +29,8 @@ const NewOrder = (props: NewOrderProps) => {
             return;
         }
 
-        props.onAddOrder(order!);
+        addOrder(order!);
+        close();
     }
 
     return (
@@ -39,14 +39,14 @@ const NewOrder = (props: NewOrderProps) => {
             <div className='w-[467px] h-[456px] border-[1px] border-[#707070] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white '>
                 <div className='flex pt-[40px] pl-[35px] pr-[50px] pb-[25px]'>
                     <span className='text-2xl font-bold flex-1'>Add order </span>
-                    <div><i className='fa fa-times flex-1 hover:cursor-pointer' aria-hidden='true' onClick={props.onClose}/></div>
+                    <div><i className='fa fa-times flex-1 hover:cursor-pointer' aria-hidden='true' onClick={close}/></div>
                 </div>
                 <div className='px-[40px]'>
-                    <NewOrderProperty name='id' title='Order ID' onChange={handleChange('id')} />
-                    <NewOrderProperty name='date' title='Order Date'  onChange={handleChange('date')}/>
-                    <NewOrderProperty name='total' title='Order Total'  onChange={handleChange('total')}/>
-                    <NewOrderProperty name='quantity' title='Quantity'  onChange={handleChange('quantity')}/>
-                    <NewOrderProperty name='status' title='Status'  onChange={handleChange('status')}/>
+                    <NewOrderProperty name='id' title='Order ID' onChanged={handleChange('id')} />
+                    <NewOrderProperty name='date' title='Order Date'  onChanged={handleChange('date')}/>
+                    <NewOrderProperty name='total' title='Order Total'  onChanged={handleChange('total')}/>
+                    <NewOrderProperty name='quantity' title='Quantity'  onChanged={handleChange('quantity')}/>
+                    <NewOrderProperty name='status' title='Status'  onChanged={handleChange('status')}/>
                     <button className='mt-[10px] h-[40px] w-[110px] bg-black text-white float-right' onClick={handleCreate}>Add order</button>
                 </div>
 
