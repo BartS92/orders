@@ -53,6 +53,7 @@ function Table() {
             const resOrders= getFilteredOrders(orders, filter);
             setFilteredOrders(resOrders);
         }
+        setPage(1);
     }
 
     const getPaginatedOrders = () => {
